@@ -15,14 +15,21 @@ function analytics(){
     }
 
     //正則式
+    
 
-    const re=/\d{10}/;
-    console.log(re.test(phoneNumber));
+    const re=/09\d{8}/;
+    if (!re.test(phoneNumber)){
+        alert("手機號碼格式不正確");
+        return;
+    }
+     console.log(phoneNumber);
+     analyticsPhoneNumber(phoneNumber);
 
-
-
-
-
-    console.log(phoneNumber);
 }
-analytics();
+//0968168168
+function analyticsPhoneNumber(phoneNumber){
+    let fourNumb = phoneNumber.substring(phoneNumber.length-4,phoneNumber.length);
+    let code =parseInt((fourNumb/80 - parseInt(fourNumb/80))*80);
+    console.log(code);
+    return code;
+}
