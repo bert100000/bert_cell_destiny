@@ -4,8 +4,17 @@ const phoneEl=document.querySelector("#phone-number")
 const analyticEl=document.querySelector("#analytics");
 const resultEl=document.querySelector("#result");
 const commentEl=document.querySelector("#result-text");
+const timeEl=document.querySelector("#time");
 
-console.log(phoneEl,analyticEl,resultEl,commentEl);
+console.log(phoneEl,analyticEl,resultEl,commentEl,timeEl);
+
+function getTime(){
+    let date=new Date();
+    timeEl.innerText =date;
+    timeEl.innerText =`${date.getFullYear()}-${}-${}-${}-${}`
+    
+    //console.log(date);
+}
 
 function analytics(){
     let phoneNumber = phoneEl.value;
@@ -17,10 +26,7 @@ function analytics(){
         alert("手機號碼為10個數字");
         return;
     }
-
     //正則式
-    
-
     const re=/09\d{8}/;
     if (!re.test(phoneNumber)){
         alert("手機號碼格式不正確");
@@ -33,13 +39,16 @@ function analytics(){
      resultEl.innerText=result[2];
      commentEl.innerText=result[1];
 
-     resultEl.style.color=resultEl.innerText=="吉" || resultEl.innerText=="吉帶兇"?"yellow":"black";
+     resultEl.style.color=(resultEl.innerText=="吉" || 
+        resultEl.innerText=="吉帶凶")?"yellow":"black";
 
 
      console.log(ResultText[code - 1]);
     
 }
 //0968168168
+
+
 function analyticsPhoneNumber(phoneNumber){
     let fourNumb = phoneNumber.substring(phoneNumber.length-4,phoneNumber.length);
     let code =parseInt((fourNumb/80 - parseInt(fourNumb/80))*80);
