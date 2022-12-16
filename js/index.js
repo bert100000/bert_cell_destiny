@@ -10,9 +10,11 @@ console.log(phoneEl,analyticEl,resultEl,commentEl,timeEl);
 
 function getTime(){
     let date=new Date();
-    timeEl.innerText =date;
-    timeEl.innerText =`${date.getFullYear()}-${}-${}-${}-${}`
-    
+    //timeEl.innerText =date;
+    timeEl.innerText =
+    `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}\
+    -${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}`;
+    setTimeout(getTime,1000);
     //console.log(date);
 }
 
