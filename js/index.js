@@ -5,8 +5,14 @@ const analyticEl=document.querySelector("#analytics");
 const resultEl=document.querySelector("#result");
 const commentEl=document.querySelector("#result-text");
 const timeEl=document.querySelector("#time");
+const resultc=['吉','吉帶凶','凶','凶帶吉'];
+
 
 console.log(phoneEl,analyticEl,resultEl,commentEl,timeEl);
+
+for(let i=0;i<10;i++){
+   console.log(resultc[getRandInt(0,3)]);
+}
 
 function getTime(){
     let date=new Date();
@@ -46,8 +52,15 @@ function analytics(){
 
 
      console.log(ResultText[code - 1]);
-    
 }
+
+function getRandInt(start,end){
+    return Math.floor(Math.random()*(end-start+1))+start;
+}
+
+     
+    
+
 //0968168168
 
 
