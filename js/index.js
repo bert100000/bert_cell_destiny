@@ -42,16 +42,38 @@ function analytics(){
     }
      console.log(phoneNumber);
      let code = analyticsPhoneNumber(phoneNumber);
-
      let result=ResultText[code - 1];
-     resultEl.innerText=result[2];
-     commentEl.innerText=result[1];
+     flashResult(result);
+    
+}
 
-     resultEl.style.color=(resultEl.innerText=="吉" || 
+let flashCount = 0;
+
+function flashResult(result){
+    let comment = resultc[getRandInt(0,resultc.length-1)];
+    resultEl.innerText = comment;
+
+    resultEl.style.color=(resultEl.innerText=="吉" || 
         resultEl.innerText=="吉帶凶")?"yellow":"black";
 
+    if (flashCount++ < 100){
+        setTimeout(
+            function(){
+                flashResult(result);
+            }
+            ,getRandInt(5, 15));
+        return;
+    }
+    flashCount=0;
+    //最後結果
+    resultEl.innerText=result[2];
+    commentEl.innerText=result[1];
 
-     console.log(ResultText[code - 1]);
+    resultEl.style.color=(resultEl.innerText=="吉" || 
+        resultEl.innerText=="吉帶凶")?"yellow":"black";
+
+    //三元運算子
+    
 }
 
 function getRandInt(start,end){
